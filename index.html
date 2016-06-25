@@ -1,0 +1,67 @@
+<style>
+  #ball {
+    display: inline-block;
+    background: orange;
+    position: relative;
+    padding: 1rem;
+    border-radius: 100%;
+    color: white;
+    left: 20px;
+    top: 0;
+  }
+</style>
+
+
+<button id="dropBallButton">Drop Ball</button>
+
+<form>
+  <input id="radioSlow" type="radio" name="speed" value="slow" > Slow<br>
+  <input id="radioMedium" type="radio" name="speed" value="medium"> Medium<br>
+  <input id="radioFast" type="radio" name="speed" value="fast" checked> Fast
+</form>
+
+<div id="ball">ball</div>
+
+
+<script>
+
+
+
+  var dropBallButton = document.getElementById("dropBallButton");
+  dropBallButton.addEventListener('click', function() {
+
+    function moveDown(amount) {
+      var ball = document.getElementById("ball");
+      ball.style.top = amount;
+    }
+
+    function dropBall(speed) {
+      for(var i = 0; i < 30; i++) {
+        var moreTime = i * speed;
+        var moreMoving = (i * 3) + "px";
+        setTimeout(moveDown, moreTime, moreMoving);
+      }
+    }
+
+    var radioFast = document.getElementById("radioFast");
+
+    if(radioFast.value == "fast" && radioFast.checked) {
+      dropBall(10);
+    }
+
+    if(radioMedium.value == "medium" && radioMedium.checked) {
+      dropBall(50);
+    }
+
+    if(radioSlow.value == "slow" && radioSlow.checked) {
+      dropBall(100);
+    }
+
+
+
+  }, false);
+
+</script>
+
+
+
